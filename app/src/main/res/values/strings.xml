@@ -22,4 +22,9 @@
     <string name="cloths">Cloth</string>
     <string name="books">Books</string>
     <string name="gadget">Gadgets</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_community">Community</string>
+    <string name="nav_about_us">About us</string>
+    <string name="nav_share">Share</string>
+    <string name="nav_version">Version</string>
 </resources>
