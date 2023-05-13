@@ -50,7 +50,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
         navigationDrawer();
 
-        //Recyclyer views function call
+        //RecyclerView function call
         featuredRecycler();
     }
     //NavigationDrawer Function

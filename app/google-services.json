@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "691726227928",
+    "project_id": "donorhub-5272d",
+    "storage_bucket": "donorhub-5272d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691726227928:android:add33fed4f5fbbda377aad",
+        "android_client_info": {
+          "package_name": "com.example.donorhub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691726227928-pal8fbt9kulomfls0njqvjbt9r818fqn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB90XmDe0QxdXkwgju4diVTIhl-S0sPxSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691726227928-pal8fbt9kulomfls0njqvjbt9r818fqn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

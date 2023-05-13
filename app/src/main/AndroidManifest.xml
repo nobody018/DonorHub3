@@ -6,11 +6,20 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.DonorHub"
         tools:targetApi="31">
+        <activity
+            android:name=".Otp_page"
+            android:exported="false" />
+        <activity
+            android:name=".common.signup.Signup"
+            android:exported="false" />
+        <activity
+            android:name=".common.signup.SignUp2nd"
+            android:exported="false" />
         <activity
             android:name=".common.login.Login"
             android:exported="false" />

@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.donorhub.R;
 import com.example.donorhub.common.login.Login;
+import com.example.donorhub.common.signup.Signup;
 
 public class WelcomeScreen extends AppCompatActivity {
 
@@ -18,6 +19,11 @@ public class WelcomeScreen extends AppCompatActivity {
     }
     public void callLoginScreen(View view){
         Intent intent = new Intent(getApplicationContext(), Login.class);
+        startActivity(intent);
+    }
+
+    public void signUpBtn(View view){
+        Intent intent = new Intent(getApplicationContext(), Signup.class);
         startActivity(intent);
     }
 }

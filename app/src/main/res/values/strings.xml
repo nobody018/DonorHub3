@@ -11,7 +11,7 @@
     <string name="enter_password">Enter Password</string>
     <string name="remember_me">Remember me</string>
     <string name="forget_password">FORGET PASSWORD</string>
-    <string name="create_account">Create an Account</string>
+    <string name="create_account">Create\nAccount</string>
     <string name="sign_up">Sign Up</string>
     <string name="how_it_work">HOW IT WORK?</string>
     <string name="Search">Search</string>
@@ -27,4 +27,12 @@
     <string name="nav_about_us">About us</string>
     <string name="nav_share">Share</string>
     <string name="nav_version">Version</string>
+    <string name="full_name">Full Name</string>
+    <string name="user_name_signup">Username</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">password</string>
+    <string name="next">next</string>
+    <string name="donator">Donator</string>
+    <string name="ngo">NGO</string>
 </resources>
