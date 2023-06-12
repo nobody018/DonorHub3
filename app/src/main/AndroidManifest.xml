@@ -12,13 +12,10 @@
         android:theme="@style/Theme.DonorHub"
         tools:targetApi="31">
         <activity
-            android:name=".Otp_page"
+            android:name=".common.signup.Otp_page"
             android:exported="false" />
         <activity
             android:name=".common.signup.Signup"
-            android:exported="false" />
-        <activity
-            android:name=".common.signup.SignUp2nd"
             android:exported="false" />
         <activity
             android:name=".common.login.Login"
