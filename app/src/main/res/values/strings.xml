@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">DonorHub</string>
-    <string name="slogan">Sharing is caring.</string>
+    <string name="slogan">Sharing is caring</string>
     <string name="slogan1">Give a little. Help a lot.</string>
     <string name="slogan2">Small acts of kindness make a big impact.</string>
     <string name="slogan3">Donate to help those who need it most.</string>
@@ -36,4 +36,10 @@
     <string name="donator">Donator</string>
     <string name="ngo">NGO</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="verify_code">Verify Code</string>
+    <string name="resend_otp_again">Resend OTP again</string>
+    <string name="didn_t_receive_otp">Didn\'t receive OTP</string>
+    <string name="welcome_msg">Welcome to DonateNow, an innovative platform dedicated to connecting generous individuals like you with NGOs and making a positive impact on communities in need. Our mission is to simplify the donation process, promote transparency, and empower individuals to contribute to charitable causes with ease.</string>
+    <string name="our_mission">At DonorHub, our mission is to bridge the gap between donors and NGOs, empowering individuals to make a difference in the lives of those in need. We aim to create a transparent and secure environment where donors can contribute to causes they are passionate about, while NGOs can access the vital support they require to create positive change.</string>
+    <string name="how_it_work_1">The DonorHub app is a platform that connects individuals who wish to donate items or funds with NGOs that can distribute those donations to people in need. The app functions through a series of steps to streamline the donation process and facilitate effective communication between donors and NGOs.</string>
 </resources>

@@ -12,22 +12,24 @@
         android:layout_margin="20dp"
         android:orientation="vertical">
         <ImageView
+            android:onClick="crossBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/close"
             android:padding="5dp"
             app:tint="@color/black" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Co\nde"
-            android:textSize="100sp"
-            android:textAllCaps="true"
-            android:layout_marginTop="10dp"
             android:layout_gravity="center"
-            android:includeFontPadding="false"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-black"
-            android:textStyle="bold"/>
+            android:includeFontPadding="false"
+            android:text="Co\nde"
+            android:textAllCaps="true"
+            android:textSize="100sp"
+            android:textStyle="bold" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,10 +59,11 @@
             android:textStyle="bold" />
 
         <com.chaos.view.PinView
+            android:id="@+id/pin_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:itemCount="6"
-            app:itemWidth="50dp"
+            app:itemWidth="40dp"
             app:itemHeight="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
@@ -82,7 +85,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Didn't receive OTP"
+                android:text="@string/didn_t_receive_otp"
                 android:textSize="14sp"
                 android:textColor="@color/black"
                 android:layout_marginEnd="5dp"/>
@@ -90,7 +93,7 @@
                 android:id="@+id/resend_otp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Resend OTP again"
+                android:text="@string/resend_otp_again"
                 android:textAllCaps="true"
                 android:textSize="14sp"
                 android:textColor="@color/black"
@@ -100,7 +103,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Verify Code"
+            android:text="@string/verify_code"
+            android:onClick="callNextScreenFromOtp"
             android:layout_marginTop="30dp"
             android:textColor="@color/white"/>
 

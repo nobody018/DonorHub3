@@ -14,11 +14,12 @@
 
         <ImageView
             android:id="@+id/login_back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:padding="5dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:onClick="backBtn"
-            android:src="@drawable/back"/>
+            android:padding="5dp"
+            android:src="@drawable/back"
+            tools:ignore="SpeakableTextPresentCheck" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,7 +39,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="@string/enter_username"
+                android:hint="Enter Phone Number"
+                android:id="@+id/log_in_phone"
                 android:textColorHint="@color/black"
                 app:boxStrokeWidthFocused="2dp"
                 app:boxStrokeColor="@color/black"
@@ -50,7 +52,7 @@
                     android:layout_height="match_parent"
                     android:fontFamily="sans-serif-black"
                     android:textColor="@color/black"
-                    android:inputType="text"/>
+                    android:inputType="phone"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,6 +61,7 @@
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="@string/enter_password"
+                android:id="@+id/lig_in_password"
                 android:textColorHint="@color/black"
                 app:boxStrokeWidthFocused="2dp"
                 app:boxStrokeColor="@color/black"
@@ -87,8 +90,18 @@
                     android:buttonTint="@color/black"
                     android:layout_centerVertical="true"
                     android:textColor="@color/black"/>
-
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:elevation="10dp"
+                    android:visibility="gone"
+                    android:id="@+id/log_in_progressbar"
+                    />
                 <Button
+                    android:id="@+id/forget_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/forget_password"
@@ -101,15 +114,15 @@
             </RelativeLayout>
 
             <Button
-
+                android:id="@+id/log_in_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/log_in"
-                android:onClick="dashBoarding"
                 android:textColor="@color/white"
                 android:layout_marginTop="20dp"/>
 
             <Button
+                android:id="@+id/create_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/create_account"
@@ -119,6 +132,7 @@
                 android:layout_gravity="center"/>
 
         </LinearLayout>
+
 
     </LinearLayout>
 
