@@ -30,6 +30,7 @@
             android:background="@drawable/card_1"
             android:layout_marginTop="-15dp">
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/ngo_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,6 +40,7 @@
                 android:layout_marginStart="15dp"/>
             <TextView
             android:id="@+id/desc"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ngo_name"
@@ -60,15 +62,17 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginBottom="10dp"/>
             <TextView
-                android:id="@+id/donate_btn"
+                android:id="@+id/phoneNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chat"
                 android:layout_below="@+id/desc"
-                android:layout_toRightOf="@+id/join_us_btn"
+                android:visibility="gone"
+                android:text="Contact us"
                 android:textSize="15sp"
-                android:textColor="#FF0000"
-                android:layout_marginStart="10dp"/>
+                android:textColor="#00FF55"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="10dp"/>
+
         </RelativeLayout>
 
     </LinearLayout>

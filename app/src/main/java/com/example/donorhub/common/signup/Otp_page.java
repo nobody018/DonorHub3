@@ -175,7 +175,7 @@ public class Otp_page extends AppCompatActivity {
 
     private void storeNewUsersData() {
             FirebaseUser firebaseUser = mAuth.getCurrentUser();
-            FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://donorhub-5272d-default-rtdb.asia-southeast1.firebasedatabase.app/");
+            FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://donorhub-41409-default-rtdb.asia-southeast1.firebasedatabase.app/");
             DatabaseReference reference = rootNode.getReference("Users");
 
             UserHelperClass addNewUser = new UserHelperClass(name, username, email, getUserPhoneNumber, password, _user);

@@ -1,7 +1,7 @@
 package com.example.donorhub.database;
 
 public class RequestHelperClass {
-    private String ngo_name, description, purpose, category;
+    private String ngo_name, description, purpose, category, phoneNo;
     private String ngo_image;
 
     public RequestHelperClass() {
@@ -10,10 +10,22 @@ public class RequestHelperClass {
         this.purpose = purpose;
         this.category = category;
         this.ngo_image = ngo_image;
+        this.phoneNo = phoneNo;
+    }
+
+    public RequestHelperClass(String ngo_name_s, String description_s, String purpose_s, String category_s, String imageUri_s) {
     }
 
     public String getNgo_name() {
         return ngo_name;
+    }
+
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
     public void setNgo_name(String ngo_name) {

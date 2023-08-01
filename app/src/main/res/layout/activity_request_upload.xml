@@ -14,6 +14,7 @@
         android:layout_margin="15dp">
 
         <ImageView
+            android:onClick="backBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/back"/>
@@ -39,21 +40,21 @@
             android:background="@drawable/card_3">
 
             <TextView
-                android:id="@+id/name_ngo"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ngo Name"
+                android:text="@string/ngo_name_1"
                 android:textSize="20sp"/>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name_ngo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/card_1"/>
+                    android:background="#F1EAF1"/>
             </com.google.android.material.textfield.TextInputLayout>
             <View
                 android:layout_width="match_parent"
@@ -61,7 +62,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/purple_200"/>
             <TextView
-                android:id="@+id/description"
+
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
@@ -71,11 +72,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/card_1"/>
+                    android:background="#F1EAF1"/>
             </com.google.android.material.textfield.TextInputLayout>
             <View
                 android:layout_width="match_parent"
@@ -84,7 +86,7 @@
                 android:background="@color/purple_200"/>
 
             <TextView
-                android:id="@+id/purpose"
+                android:id="@+id/purpose2"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
@@ -94,11 +96,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/purpose"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/card_1"/>
+                    android:background="#F1EAF1"/>
             </com.google.android.material.textfield.TextInputLayout>
             <View
                 android:layout_width="match_parent"

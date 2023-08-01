@@ -72,23 +72,20 @@
             android:background="@color/purple_200"
             android:elevation="8dp">
 
-            <TextView
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
                 android:text="@string/Search"
                 android:textSize="15sp"
-                tools:ignore="RelativeOverlap" />
+                tools:ignore="RelativeOverlap"
+                app:iconifiedByDefault="false"
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/search"
-                tools:ignore="ContentDescription" />
+                android:hint="Search here"/>
+
+
 
         </RelativeLayout>
 
@@ -252,7 +249,23 @@
 
             </LinearLayout>
 
+
+
         </LinearLayout>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:visibility="visible"
+                    android:backgroundTint="@color/purple_200"
+                    android:src="@drawable/plus"
+                    android:contentDescription="addrequest"
+                    android:layout_margin="16dp" />
+
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/featured_recycler"
@@ -261,16 +274,10 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp" />
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
-                android:backgroundTint="@color/purple_200"
-                android:src="@drawable/plus"
 
-                android:contentDescription="addrequest"
-                android:layout_margin="16dp" />
+
+
+
     </LinearLayout>
 
     </LinearLayout>

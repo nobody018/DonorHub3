@@ -2,12 +2,16 @@ package com.example.donorhub.user;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ClipData;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -29,14 +33,22 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FeatuedAdapter.itemClickListener{
     private String fullName, userName, phoneNO, email, password, userType;
     RecyclerView featuredRecycler;
+
+    SearchView searchView;
     RecyclerView.Adapter adapter;
+
+    FeatuedAdapter myAdapter;
     FloatingActionButton fab;
+
+    ArrayList<FeaturedHelperClass> featuredLocation = new ArrayList<>();
 
     //Drawer Menu
     DrawerLayout drawerLayout;
@@ -45,7 +57,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     ImageView menuIcon;
 
     CircleImageView circleImageView;
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +73,20 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         navigationView = findViewById(R.id.navigation_view);
         menuIcon = findViewById(R.id.menu_icon);
         circleImageView = findViewById(R.id.profile);
+        searchView = findViewById(R.id.search_view);
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                fileList(newText);
+                return true;
+            }
+        });
 
         fullName = getIntent().getStringExtra("fullName");
         email = getIntent().getStringExtra("email");
@@ -69,9 +95,16 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         password = getIntent().getStringExtra("password");
         userType = getIntent().getStringExtra("user");
 
+        String userType2 = userType.toString();
+
+
+
+
         fab = findViewById(R.id.fab);
 
-        if (userType.equals("NGO")){
+        if (userType2 == "Donor"){
+            fab.setVisibility(View.GONE);
+        }else {
             fab.setVisibility(View.VISIBLE);
         }
         fab.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +118,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
 
         navigationDrawer();
+
+
+
+
 
         //RecyclerView function call
         featuredRecycler();
@@ -106,6 +143,22 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             }
         });*/
     }
+
+    private void fileList(String newText) {
+        ArrayList<FeaturedHelperClass> filteredList = new ArrayList<>();
+        for (FeaturedHelperClass featuredHelperClass : featuredLocation){
+            if(featuredHelperClass.getNgo_name().toLowerCase().contains(newText.toLowerCase())){
+                filteredList.add(featuredHelperClass);
+            }
+        }
+        if (filteredList.isEmpty()){
+            Toast.makeText(this, "No Data found", Toast.LENGTH_SHORT).show();
+        }else {
+
+        }
+
+    }
+
     //NavigationDrawer Function
     private void navigationDrawer() {
 
@@ -165,13 +218,49 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     private void featuredRecycler() {
         featuredRecycler.setHasFixedSize(true);
         featuredRecycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
+        firebaseDatabase = FirebaseDatabase.getInstance().getReference("Request");
+        myAdapter = new FeatuedAdapter(featuredLocation);
+        featuredRecycler.setAdapter(myAdapter);
+        firebaseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    FeaturedHelperClass featuredHelperClass = dataSnapshot.getValue(FeaturedHelperClass.class);
+                    featuredLocation.add(featuredHelperClass);
+                }
+                myAdapter.notifyDataSetChanged();
+            }
 
-        ArrayList<FeaturedHelperClass> featuredLocation = new ArrayList<>();
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        featuredLocation.add(new FeaturedHelperClass(R.drawable.donate_1,fullName, "We are gathering Cloths for poor ladies in our locality. "));
+            }
+        });
+        /*firebaseDatabase.getReference("Request").child("Request").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    FeaturedHelperClass featuredHelperClass = snapshot.getValue(FeaturedHelperClass.class);
+                    featuredLocation.add(featuredHelperClass);
 
-        adapter = new FeatuedAdapter(featuredLocation);
-        featuredRecycler.setAdapter(adapter);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });*/
+
+        /*featuredLocation.add(new FeaturedHelperClass(R.drawable.donate_1,"Radhika donation", "We are gathering Cloths for poor ladies in our locality. "));
+        featuredLocation.add(new FeaturedHelperClass(R.drawable.donate_2,"Friend Zone", "We are gathering Cloths for poor ladies in our locality. "));
+        featuredLocation.add(new FeaturedHelperClass(R.drawable.donate_3,"Global Helper", "We are gathering Cloths for poor ladies in our locality. "));
+        featuredLocation.add(new FeaturedHelperClass(R.drawable.donate_4,"My People", "We are gathering Cloths for poor ladies in our locality. "));
+        featuredLocation.add(new FeaturedHelperClass(R.drawable.donation,"Human Society", "We are gathering Cloths for poor ladies in our locality. "));
+           */
+       /* adapter = new FeatuedAdapter(featuredLocation);
+        featuredRecycler.setAdapter(adapter);*/
     }
 
 
@@ -185,5 +274,13 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         intent.putExtra("password", password);
         startActivity(intent);
 
+    }
+
+    @Override
+    public void onItemcheck(int position) {
+        Toast.makeText(this, phoneNO, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:"+phoneNO));
+        startActivity(intent);
     }
 }

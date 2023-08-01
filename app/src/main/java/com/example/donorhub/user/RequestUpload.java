@@ -35,10 +35,11 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 public class RequestUpload extends AppCompatActivity {
     String phoneNo;
+    String ngo_name_s, description_s, purpose_s, category_s, ImageUri_s;
     TextView ngo_name, description, purpose;
     RadioGroup category;
 
-    RadioButton selectedCategory;
+
     ImageView ngo_image, upload_image;
     RelativeLayout relativeLayout;
     Button button;
@@ -63,22 +64,28 @@ public class RequestUpload extends AppCompatActivity {
         upload_image = findViewById(R.id.img_upload_btn);
         relativeLayout = findViewById(R.id.relative);
         button = findViewById(R.id.upload_btn);
-        selectedCategory = findViewById(category.getCheckedRadioButtonId());
+
+
+
+
 
         phoneNo = getIntent().getStringExtra("phoneNo");
+
+
 
         upload_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UploadImage();
                 relativeLayout.setVisibility(View.VISIBLE);
+                upload_image.setVisibility(View.GONE);
             }
         });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StorageReference reference = firebaseStorage.getReference().child("Users").child(phoneNo);
+                StorageReference reference = firebaseStorage.getReference().child("Request").child(System.currentTimeMillis()+"");
 
                 reference.putFile(ImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -87,18 +94,24 @@ public class RequestUpload extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
                                 RequestHelperClass requestHelperClass = new RequestHelperClass();
-                                requestHelperClass.setDescription(uri.toString());
-
+                                requestHelperClass.setNgo_image(uri.toString());
                                 requestHelperClass.setNgo_name(ngo_name.getText().toString());
                                 requestHelperClass.setDescription(description.getText().toString());
-                                requestHelperClass.setCategory(selectedCategory.getText().toString());
                                 requestHelperClass.setPurpose(purpose.getText().toString());
+                                requestHelperClass.setPhoneNo(phoneNo);
 
-                                database.getReference().child("Users").push().setValue(requestHelperClass)
+
+
+
+
+
+                                database.getReference("Request").child(System.currentTimeMillis()+"").setValue(requestHelperClass)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {
                                                 Toast.makeText(RequestUpload.this, "Request uploaded successfully", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(RequestUpload.this, UserDashboard.class));
+                                                finish();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override
@@ -144,9 +157,15 @@ public class RequestUpload extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && requestCode == RESULT_OK){
+        if (requestCode == 101 && resultCode == RESULT_OK){
             ImageUri = data.getData();
             ngo_image.setImageURI(ImageUri);
         }
+    }
+
+    public void backBtn(View view) {
+        Intent intent = new Intent(RequestUpload.this, UserDashboard.class);
+        startActivity(intent);
+        finish();
     }
 }

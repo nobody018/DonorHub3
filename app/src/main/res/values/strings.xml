@@ -42,4 +42,5 @@
     <string name="welcome_msg">Welcome to DonateNow, an innovative platform dedicated to connecting generous individuals like you with NGOs and making a positive impact on communities in need. Our mission is to simplify the donation process, promote transparency, and empower individuals to contribute to charitable causes with ease.</string>
     <string name="our_mission">At DonorHub, our mission is to bridge the gap between donors and NGOs, empowering individuals to make a difference in the lives of those in need. We aim to create a transparent and secure environment where donors can contribute to causes they are passionate about, while NGOs can access the vital support they require to create positive change.</string>
     <string name="how_it_work_1">The DonorHub app is a platform that connects individuals who wish to donate items or funds with NGOs that can distribute those donations to people in need. The app functions through a series of steps to streamline the donation process and facilitate effective communication between donors and NGOs.</string>
+    <string name="ngo_name_1">Ngo Name</string>
 </resources>

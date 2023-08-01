@@ -1,5 +1,6 @@
 package com.example.donorhub.Helperfile;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,21 +11,30 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.donorhub.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class FeatuedAdapter extends RecyclerView.Adapter<FeatuedAdapter.FeaturedViewHolder> {
     ArrayList<FeaturedHelperClass> featuredLocations;
+    Context context;
+    itemClickListener itemClickListener;
 
     public FeatuedAdapter(ArrayList<FeaturedHelperClass> featuredLocations) {
         this.featuredLocations = featuredLocations;
+        this.itemClickListener = itemClickListener;
+    }
+    
+    public void setFilteredList(ArrayList<FeaturedHelperClass> filteredList){
+        this.featuredLocations = filteredList;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public FeaturedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.featured_card_design,parent,false);
-        FeaturedViewHolder featuredViewHolder = new FeaturedViewHolder(view);
+        FeaturedViewHolder featuredViewHolder = new FeaturedViewHolder(view, itemClickListener);
         return featuredViewHolder;
     }
 
@@ -32,9 +42,15 @@ public class FeatuedAdapter extends RecyclerView.Adapter<FeatuedAdapter.Featured
     public void onBindViewHolder(@NonNull FeaturedViewHolder holder, int position) {
         FeaturedHelperClass featuredHelperClass = featuredLocations.get(position);
 
-        holder.image.setImageResource(featuredHelperClass.getImage());
+        String imageuri = null;
+        imageuri = featuredHelperClass.getNgo_image();
+
+
+        Picasso.get().load(imageuri).into(holder.image);
+
         holder.title.setText(featuredHelperClass.getNgo_name());
         holder.desc.setText(featuredHelperClass.getDescription());
+        holder.phoneNo.setText(featuredHelperClass.getPhoneNo());
     }
 
     @Override
@@ -42,19 +58,41 @@ public class FeatuedAdapter extends RecyclerView.Adapter<FeatuedAdapter.Featured
         return featuredLocations.size();
     }
 
-    public static class FeaturedViewHolder extends RecyclerView.ViewHolder{
+    public static class FeaturedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView image;
-        TextView title, desc;
+        TextView title, desc, contactUs, phoneNo;
+         itemClickListener itemClickListener;
 
-        public FeaturedViewHolder(@NonNull View itemView) {
+        String phoneNo_;
+
+
+
+        public FeaturedViewHolder(@NonNull View itemView, itemClickListener itemClickListener) {
             super(itemView);
-
+            contactUs = itemView.findViewById(R.id.join_us_btn);
             image = itemView.findViewById(R.id.ngo_img);
             title = itemView.findViewById(R.id.ngo_name);
             desc = itemView.findViewById(R.id.desc);
+            phoneNo = itemView.findViewById(R.id.phoneNo);
+
+            this.itemClickListener = itemClickListener;
+            //itemView.setOnClickListener(this);
+            contactUs.setOnClickListener(this);
+
+            phoneNo_=phoneNo.getText().toString();
+
+
 
         }
+
+        @Override
+        public void onClick(View view) {
+
+        }
+    }
+    public interface itemClickListener{
+        void onItemcheck(int position);
     }
 
 
