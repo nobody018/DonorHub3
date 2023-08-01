@@ -5,6 +5,14 @@ plugins {
 
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\iamno\\Desktop\\my_release_keystore.jks')
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
+        }
+    }
     namespace 'com.example.donorhub'
     compileSdk 33
 
@@ -22,6 +30,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
