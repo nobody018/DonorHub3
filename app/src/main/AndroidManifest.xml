@@ -15,6 +15,9 @@
         android:theme="@style/Theme.DonorHub"
         tools:targetApi="31">
         <activity
+            android:name=".user.SingleRequest"
+            android:exported="false" />
+        <activity
             android:name=".user.RequestUpload"
             android:exported="false" />
         <activity

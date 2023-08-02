@@ -1,6 +1,7 @@
 package com.example.donorhub.Helperfile;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.donorhub.R;
+import com.example.donorhub.user.SingleRequest;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -45,12 +47,17 @@ public class FeatuedAdapter extends RecyclerView.Adapter<FeatuedAdapter.Featured
         String imageuri = null;
         imageuri = featuredHelperClass.getNgo_image();
 
-
         Picasso.get().load(imageuri).into(holder.image);
+
+
+
 
         holder.title.setText(featuredHelperClass.getNgo_name());
         holder.desc.setText(featuredHelperClass.getDescription());
         holder.phoneNo.setText(featuredHelperClass.getPhoneNo());
+
+
+
     }
 
     @Override
@@ -70,17 +77,13 @@ public class FeatuedAdapter extends RecyclerView.Adapter<FeatuedAdapter.Featured
 
         public FeaturedViewHolder(@NonNull View itemView, itemClickListener itemClickListener) {
             super(itemView);
-            contactUs = itemView.findViewById(R.id.join_us_btn);
+
             image = itemView.findViewById(R.id.ngo_img);
             title = itemView.findViewById(R.id.ngo_name);
             desc = itemView.findViewById(R.id.desc);
             phoneNo = itemView.findViewById(R.id.phoneNo);
 
-            this.itemClickListener = itemClickListener;
-            //itemView.setOnClickListener(this);
-            contactUs.setOnClickListener(this);
 
-            phoneNo_=phoneNo.getText().toString();
 
 
 

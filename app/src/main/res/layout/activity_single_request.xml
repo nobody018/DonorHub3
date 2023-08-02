@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.SingleRequest"
+    android:background="@color/purple_200">
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <ImageView
+            android:id="@+id/ngoDp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:layout_margin="15dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/user2"
+            android:id="@+id/id_proflie1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ngoFullName"
+            android:layout_alignStart="@+id/id_proflie1"
+            android:hint="Loading"
+            android:layout_marginStart="50dp"
+            android:textSize="18sp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/ngoFullName"
+            android:id="@+id/divider_Fullname"
+            android:background="@color/purple_200"/>
+
+
+
+
+        <ImageView
+            android:layout_marginTop="20sp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/phone_call"
+            android:layout_below="@+id/divider_Fullname"
+            android:id="@+id/id_image_phoneNo"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_phonenumber"
+            android:layout_alignStart="@+id/id_image_phoneNo"
+            android:hint="Loading"
+            android:layout_marginStart="50dp"
+            android:textSize="18sp"
+            android:layout_below="@+id/divider_Fullname"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/show_phonenumber"
+            android:background="@color/purple_200"
+            android:id="@+id/divider_phonenumber"
+            android:autoLink="phone"/>
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>
+
+</ScrollView>

@@ -16,6 +16,7 @@ public class RequestHelperClass {
     public RequestHelperClass(String ngo_name_s, String description_s, String purpose_s, String category_s, String imageUri_s) {
     }
 
+
     public String getNgo_name() {
         return ngo_name;
     }

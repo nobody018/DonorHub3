@@ -51,23 +51,14 @@
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="5dp" />
 
-            <TextView
-                android:id="@+id/join_us_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/desc"
-                android:text="Contact us"
-                android:textSize="15sp"
-                android:textColor="#00FF55"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="10dp"/>
+
             <TextView
                 android:id="@+id/phoneNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/desc"
-                android:visibility="gone"
-                android:text="Contact us"
+                android:autoLink="phone"
+                android:text="Phone Number"
                 android:textSize="15sp"
                 android:textColor="#00FF55"
                 android:layout_marginStart="15dp"

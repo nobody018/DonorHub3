@@ -278,9 +278,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
     @Override
     public void onItemcheck(int position) {
-        Toast.makeText(this, phoneNO, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:"+phoneNO));
-        startActivity(intent);
+
     }
 }
