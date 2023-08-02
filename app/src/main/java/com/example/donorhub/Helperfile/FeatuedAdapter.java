@@ -44,14 +44,11 @@ public class FeatuedAdapter extends RecyclerView.Adapter<FeatuedAdapter.Featured
     public void onBindViewHolder(@NonNull FeaturedViewHolder holder, int position) {
         FeaturedHelperClass featuredHelperClass = featuredLocations.get(position);
 
-        String imageuri = null;
-        imageuri = featuredHelperClass.getNgo_image();
-
-        Picasso.get().load(imageuri).into(holder.image);
 
 
 
 
+        holder.image.setImageResource(featuredHelperClass.getNgo_image());
         holder.title.setText(featuredHelperClass.getNgo_name());
         holder.desc.setText(featuredHelperClass.getDescription());
         holder.phoneNo.setText(featuredHelperClass.getPhoneNo());

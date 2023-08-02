@@ -72,13 +72,14 @@ public class RequestUpload extends AppCompatActivity {
             public void onClick(View v) {
                 UploadImage();
                 relativeLayout.setVisibility(View.VISIBLE);
+                upload_image.setVisibility(View.GONE);
             }
         });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StorageReference reference = firebaseStorage.getReference().child("Users").child(phoneNo);
+                StorageReference reference = firebaseStorage.getReference("Request").child(System.currentTimeMillis()+"");
 
                 reference.putFile(ImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -91,10 +92,10 @@ public class RequestUpload extends AppCompatActivity {
 
                                 requestHelperClass.setNgo_name(ngo_name.getText().toString());
                                 requestHelperClass.setDescription(description.getText().toString());
-                                requestHelperClass.setCategory(selectedCategory.getText().toString());
+                                //requestHelperClass.setCategory(selectedCategory.getText().toString());
                                 requestHelperClass.setPurpose(purpose.getText().toString());
 
-                                database.getReference().child("Users").push().setValue(requestHelperClass)
+                                database.getReference().child("Request").push().setValue(requestHelperClass)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {
@@ -144,7 +145,7 @@ public class RequestUpload extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && requestCode == RESULT_OK){
+        if (requestCode == 101 && resultCode == RESULT_OK){
             ImageUri = data.getData();
             ngo_image.setImageURI(ImageUri);
         }

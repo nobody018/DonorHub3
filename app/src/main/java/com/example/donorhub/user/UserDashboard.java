@@ -152,7 +152,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             }
         }
         if (filteredList.isEmpty()){
-            Toast.makeText(this, "No Data found", Toast.LENGTH_SHORT).show();
+
         }else {
 
         }
@@ -218,49 +218,20 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     private void featuredRecycler() {
         featuredRecycler.setHasFixedSize(true);
         featuredRecycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
-        firebaseDatabase = FirebaseDatabase.getInstance().getReference("Request");
-        myAdapter = new FeatuedAdapter(featuredLocation);
-        featuredRecycler.setAdapter(myAdapter);
-        firebaseDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    FeaturedHelperClass featuredHelperClass = dataSnapshot.getValue(FeaturedHelperClass.class);
-                    featuredLocation.add(featuredHelperClass);
-                }
-                myAdapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-        /*firebaseDatabase.getReference("Request").child("Request").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    FeaturedHelperClass featuredHelperClass = snapshot.getValue(FeaturedHelperClass.class);
-                    featuredLocation.add(featuredHelperClass);
 
-                }
-                adapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });*/
+        featuredLocation.add(new FeaturedHelperClass("Radhika donation","We are gathering Cloths for poor ladies in our locality. ","9330089572",R.drawable.donate_1 ));
+        featuredLocation.add(new FeaturedHelperClass("Friend Zone","We are gathering Cloths for poor ladies in our locality. ", "9330089572",R.drawable.donate_2 ));
+        featuredLocation.add(new FeaturedHelperClass("Global Helper","We are gathering Cloths for poor ladies in our locality. ","9674783266",R.drawable.donate_3 ));
+        featuredLocation.add(new FeaturedHelperClass("My People","We are gathering Cloths for poor ladies in our locality. ","9674125483",R.drawable.donate_4 ));
+        featuredLocation.add(new FeaturedHelperClass("Human Society","We are gathering Cloths for poor ladies in our locality.","6289111370",R.drawable.donation));
+        featuredLocation.add(new FeaturedHelperClass("Human Society","we are collecting cloth","9674125483",R.drawable.donation));
 
-        /*featuredLocation.add(new FeaturedHelperClass(R.drawable.donate_1,"Radhika donation", "We are gathering Cloths for poor ladies in our locality. "));
-        featuredLocation.add(new FeaturedHelperClass(R.drawable.donate_2,"Friend Zone", "We are gathering Cloths for poor ladies in our locality. "));
-        featuredLocation.add(new FeaturedHelperClass(R.drawable.donate_3,"Global Helper", "We are gathering Cloths for poor ladies in our locality. "));
-        featuredLocation.add(new FeaturedHelperClass(R.drawable.donate_4,"My People", "We are gathering Cloths for poor ladies in our locality. "));
-        featuredLocation.add(new FeaturedHelperClass(R.drawable.donation,"Human Society", "We are gathering Cloths for poor ladies in our locality. "));
-           */
-       /* adapter = new FeatuedAdapter(featuredLocation);
-        featuredRecycler.setAdapter(adapter);*/
+       adapter = new FeatuedAdapter(featuredLocation);
+        featuredRecycler.setAdapter(adapter);
     }
 
 
